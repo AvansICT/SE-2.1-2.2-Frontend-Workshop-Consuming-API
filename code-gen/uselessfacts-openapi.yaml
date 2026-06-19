@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Useless Facts API
+  description: >
+    Onofficiële OpenAPI-spec voor de publieke uselessfacts-API
+    (https://uselessfacts.jsph.pl). Opgesteld voor onderwijsdoeleinden
+    om client-codegen te demonstreren (openapi-typescript / openapi-fetch / Orval).
+  version: 2.0.0
+
+servers:
+  - url: https://uselessfacts.jsph.pl/api/v2
+    description: Productie
+
+paths:
+  /facts/random:
+    get:
+      operationId: getRandomFact
+      summary: Haal een willekeurig fact op
+      parameters:
+        - $ref: '#/components/parameters/Language'
+      responses:
+        '200':
+          description: Een willekeurig fact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fact'
+
+  /facts/today:
+    get:
+      operationId: getTodayFact
+      summary: Haal het fact van de dag op
+      parameters:
+        - $ref: '#/components/parameters/Language'
+      responses:
+        '200':
+          description: Het fact van vandaag
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fact'
+
+  /facts/{id}:
+    get:
+      operationId: getFactById
+      summary: Haal een specifiek fact op via id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: De unieke identifier van het fact
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Het gevraagde fact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fact'
+        '404':
+          description: Fact niet gevonden
+
+components:
+  parameters:
+    Language:
+      name: language
+      in: query
+      required: false
+      description: Taal van het fact
+      schema:
+        type: string
+        enum: [en, de]
+        default: en
+
+  schemas:
+    Fact:
+      type: object
+      required: [id, text, source, source_url, language, permalink]
+      properties:
+        id:
+          type: string
+          description: Unieke identifier van het fact
+          example: 88c646225a412a99760f2e3c3e50f2c4
+        text:
+          type: string
+          description: De tekst van het fact
+          example: The house fly hums in the middle octave key of F.
+        source:
+          type: string
+          description: Bron van het fact
+          example: djtech.net
+        source_url:
+          type: string
+          format: uri
+          description: URL naar de bron
+        language:
+          type: string
+          enum: [en, de]
+          description: Taal van het fact
+        permalink:
+          type: string
+          format: uri
+          description: Permanente link naar dit fact

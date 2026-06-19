@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Useless Facts – fetch</title>
+  </head>
+  <body>
+    <h1>Useless Fact</h1>
+    <p id="fact">Loading...</p>
+    <button id="btn">Get new fact</button>
+
+    <script type="module">
+      const API_URL = "https://uselessfacts.jsph.pl/api/v2/facts/random";
+
+      async function loadFact() {
+        
+      }
+
+      document.getElementById("btn").addEventListener("click", loadFact);
+    </script>
+  </body>
+</html>
