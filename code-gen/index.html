@@ -1,26 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Useless Facts – generated client</title>
-  </head>
-  <body>
-    <!--
-      SETUP
-      ─────
-      1. npm install
-      2. npm run generate   ← runs Orval, creates src/generated/uselessfacts.ts
-      3. npm run dev        ← starts Vite dev server
-    -->
 
-    <h1>Useless Facts</h1>
+<head>
+  <meta charset="UTF-8" />
+  <title>Useless Facts – generated client</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-    <section>
-      <h2>Random fact</h2>
-      <button id="btn-random">Get random fact</button>
-      <p id="output-random"></p>
-    </section>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 640px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      color: #1a1a1a;
+      background: #f5f5f5;
+    }
 
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    h1 {
+      font-size: 1.1rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin: 2rem 0 .5rem;
+    }
+
+    h1:first-child {
+      font-size: 2rem;
+      color: #1a1a1a;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    section {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    h2 {
+      margin: 0 0 .75rem;
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 0 0 .75rem;
+      line-height: 1.6;
+      min-height: 1.4em;
+    }
+
+    small {
+      color: #888;
+      font-size: .8rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 1.5rem 0;
+    }
+
+    button {
+      padding: .4rem .9rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #fff;
+      cursor: pointer;
+      font-size: .875rem;
+      margin-right: .5rem;
+      margin-top: .5rem;
+    }
+
+    button:hover {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <h1>Useless Facts</h1>
+
+  <h1>Opdracht 1 - Using generated client</h1>
+  <small>Zorg dat een random fact wordt getoond bij het ophalen van een query</small>
+  <section>
+    <h2>Random fact</h2>
+    <button id="btn-random">Get random fact</button>
+    <p id="output-random"></p>
+  </section>
+  <hr />
+  <h1>Opdracht 2 - Using Tanstack</h1>
+  <small> De twee componenten dienen dezelfde random fact te tonen, die maar één keer wordt opgehaald</small>
+  <section>
+    <h2>Component 1</h2>
+    <p id="component1-output"></p>
+  </section>
+
+  <section>
+    <h2>Component 2</h2>
+    <p id="component2-output"></p>
+  </section>
+
+
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>

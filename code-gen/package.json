@@ -7,6 +7,7 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
+    "@tanstack/query-core": "^5.101.0",
     "axios": "^1.7.0"
   },
   "devDependencies": {
